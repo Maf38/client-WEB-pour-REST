@@ -12,6 +12,7 @@ package dao;
 import com.google.gson.Gson;
 
 import dto.Aeroport;
+import dto.Vol;
 import java.io.Reader;
 import java.net.URL;
 import java.util.ArrayList;
@@ -48,11 +49,43 @@ public class daoAeroport {
                 Aeroport co = gson.fromJson(o.toString(), Aeroport.class);
                 list.add(co);
             }
+            
         } catch (Exception e) {
             System.out.println("Exception client : " + e.getMessage());
             list = null;
         }
         return list;
 
+    }
+    
+    public static List <Vol> getVolParVille(String ville){
+        
+         List<Vol> list;
+        try {
+            URL url = new URL("http://localhost:8080/serviceREST/webresources/entite.aeroport/listeVol/"+ville);
+            Reader reader = new URLReader(url);
+            list = new ArrayList<>();
+            JsonReader jsonReader = (JsonReader) Json.createReader(reader);
+            //on demande au reader d'extraire un tableau json
+            JsonArray arr;
+            arr = jsonReader.readArray();
+            
+         
+            for (JsonValue o : arr) {
+            // pour chaque élément du tableau, qui est un JsonObject,
+            // on utilise Gson pour en faire un objet métier
+                Vol co = gson.fromJson(o.toString(), Vol.class);
+                list.add(co);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Exception client : " + e.getMessage());
+            list = null;
+        }
+        return list;
+
+        
+        
+        
     }
 }

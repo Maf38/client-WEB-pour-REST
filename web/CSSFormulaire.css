@@ -43,7 +43,7 @@ h2{
     background-color: green;
 }
 
-#cadre{
+#cadre1{
     height: 300px;
     width:600px; 
     border-style: ridge;
@@ -57,7 +57,25 @@ h2{
     font-weight: bold;
     color:brown;
 }
+
+
+
+#cadre2{
+    height: 300px;
+    width:900px; 
+    border-style: ridge;
+    border-radius: 10px;
+    border-color: chocolate;
+    border-width: 6px;
+    text-align: center;
+    background-color: mediumpurple;
+    font-size: 10px;
+    font-family: "Consolas";
+    font-weight: bold;
+    color: crimson;
+}
+
 table{
     border: 1px solid black;
-    background-color: darkgoldenrod;
+    background-color: darkkhaki;
 }
